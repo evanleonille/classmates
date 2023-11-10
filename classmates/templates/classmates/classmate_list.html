@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classmates</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      padding: 20px;
+      background: linear-gradient(45deg, #3498db, #FAFAFA, #1abc9c, #f39c12);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s infinite;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="mt-4 mb-4">Classmates</h1>
+
+    <table class="table table-bordered bg-white">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>Gender</th>
+          <th>View</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for classmate in object_list %}
+        <tr>
+          <td>{{ classmate.firstname }}</td>
+          <td>{{ classmate.lastname }}</td>
+          <td>{{ classmate.age }}</td>
+          <td>{{ classmate.address }}</td>
+          <td>{{ classmate.gender }}</td>
+          <td><a href="{% url "classmate_view" classmate.id %}" class="btn btn-info btn-sm">View</a></td>
+          <td><a href="{% url "classmate_edit" classmate.id %}" class="btn btn-warning btn-sm">Edit</a></td>
+          <td><a href="{% url "classmate_delete" classmate.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <a href="{% url "classmate_new" %}" class="btn btn-success">New</a>
+  </div>
+
+</body>
+</html>
+

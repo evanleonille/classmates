@@ -1,0 +1,12 @@
+<h1>Classmate Details</h1>
+<h2>Name: {{object.firstname}}  {{object.lastname}}  </h2>
+<h2>Age: {{ object.age }}  </h2>
+<h2>Address: {{ object.address }}  </h2>
+<h2>Gender: {{ object.gender }}  </h2>
+
+
+<h1>Classmate Edit</h1>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
